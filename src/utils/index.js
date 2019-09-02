@@ -49,3 +49,35 @@ export const playersBySuperSort = players => {
     }
   });
 };
+
+export const CalColumnWidth = columns => {
+  return 90 / columns + "%";
+};
+
+export const ChangePlayerState = event => {
+  let state = event.currentTarget.className.split(" ")[2];
+  const element = event.currentTarget;
+
+  switch (state) {
+    case "badge-danger":
+      element.classList.remove("badge-danger");
+      element.classList.add("badge-success");
+      // element.innerHTML = '<i class="fas fa-check"></i>';
+      element.innerHTML = "";
+      break;
+    case "badge-info":
+      element.classList.remove("badge-info");
+      element.classList.add("badge-danger");
+      element.innerHTML = '<i class="fas fa-slash"></i>';
+      break;
+    default:
+      element.classList.remove("badge-success");
+      element.classList.add("badge-info");
+      // element.innerHTML = '<i class="fas fa-times"></i>';
+      element.innerHTML = "";
+  }
+};
+
+export const ChangeWholePlayerState = event => {
+  return;
+};
