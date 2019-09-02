@@ -1,39 +1,48 @@
 const DB_BossesBattleOfDazaralor = [
   {
     ID: 1,
-    Name: "Champion of the Light"
+    Name: "Champion of the Light",
+    Alias: "Champion"
   },
   {
     ID: 2,
-    Name: "Grong"
+    Name: "Grong",
+    Alias: "Grong"
   },
   {
     ID: 3,
-    Name: "Jadefire Masters"
+    Name: "Jadefire Masters",
+    Alias: "Jadefire"
   },
   {
     ID: 4,
-    Name: "Opulence"
+    Name: "Opulence",
+    Alias: "Opulence"
   },
   {
     ID: 5,
-    Name: "Conclave of the Chosen"
+    Name: "Conclave of the Chosen",
+    Alias: "Conclave"
   },
   {
     ID: 6,
-    Name: "King Rastakhan"
+    Name: "King Rastakhan",
+    Alias: "Rastakhan"
   },
   {
     ID: 7,
-    Name: "High Tinker Mekkatorque"
+    Name: "High Tinker Mekkatorque",
+    Alias: "Mekkatorque"
   },
   {
     ID: 8,
-    Name: "Stormwall Blockade"
+    Name: "Stormwall Blockade",
+    Alias: "Blockade"
   },
   {
     ID: 9,
-    Name: "Lady Jaina Proudmoore"
+    Name: "Lady Jaina Proudmoore",
+    Alias: "Jaina"
   }
 ];
 
