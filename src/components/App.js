@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navigation from "./Navigation";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./../assets/sass/styles.scss";
 
 // Import Core Components
 import Home from "./Home";
@@ -13,7 +14,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Navigation />
-          <div className="container-fluid mt-5">
+          <div className="container-fluid mt-3">
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/home" component={Home} />

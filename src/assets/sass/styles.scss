@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap");
+
+$defaultFontSize: 15px;
+$defaultFont: "Roboto", sans-serif;
+
+* {
+  font-family: $defaultFont;
+}
+
+body {
+  background-color: #fff;
+  padding-bottom: 50px;
+}
+
+.card {
+  background-color: #ececec;
+
+  border: 2px solid #c6c6c6;
+}
+
+.card-title {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.card-header {
+  min-height: 58px;
+  border-bottom: 2px solid #c6c6c6;
+}
+
+.card-header .nav-link {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: $defaultFontSize - 3;
+  transition: 0.3s ease;
+  border: 0 none;
+}
+
+.card-header .nav-link.active {
+  font-size: $defaultFontSize + 3;
+  transition: 0.3s ease;
+  border: 2px solid #c6c6c6;
+  border-bottom: 0 none;
+}
+
+span.badge.badge-setup {
+  display: block;
+  font-size: $defaultFontSize - 1;
+  padding: 7px 0px;
+  min-height: 29px;
+}
+
+span.badge.badge-setup:hover {
+  cursor: pointer;
+}
+
+span.badge.badge-setup:active {
+  animation: shrink 0.3s;
+  animation-iteration-count: 1;
+}
+
+table th {
+  vertical-align: middle !important;
+  text-align: center;
+}
+
+@keyframes shrink {
+  from {
+    transform: scale(1);
+    -webkit-transform: scale(1);
+  }
+  to {
+    transform: scale(0.8);
+    -webkit-transform: scale(0.8);
+  }
+}
