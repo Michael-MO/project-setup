@@ -1,3 +1,5 @@
+import React from "react";
+
 // "The Ultimate Way to Slugify a URL String in JavaScript".
 // Source & Credit: https://medium.com/@mhagemann/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1
 // This function turns a string into a URL-friendly string.
@@ -55,7 +57,7 @@ export const CalColumnWidth = columns => {
 };
 
 export const ChangePlayerState = event => {
-  let state = event.currentTarget.className.split(" ")[2];
+  const state = event.currentTarget.className.split(" ")[2];
   const element = event.currentTarget;
 
   switch (state) {
@@ -65,19 +67,28 @@ export const ChangePlayerState = event => {
       // element.innerHTML = '<i class="fas fa-check"></i>';
       element.innerHTML = "";
       break;
-    case "badge-info":
-      element.classList.remove("badge-info");
+    case "badge-out":
+      element.classList.remove("badge-out");
       element.classList.add("badge-danger");
       element.innerHTML = '<i class="fas fa-slash"></i>';
       break;
     default:
       element.classList.remove("badge-success");
-      element.classList.add("badge-info");
-      // element.innerHTML = '<i class="fas fa-times"></i>';
-      element.innerHTML = "";
+      element.classList.add("badge-out");
+      element.innerHTML = '<i class="fas fa-slash"></i>';
+    // element.innerHTML = "";
   }
 };
 
 export const ChangeWholePlayerState = event => {
   return;
+};
+
+export const CreateArrow = () => {
+  const arrow = document.createElement("span");
+
+  arrow.setAttribute("ID", "PlayerIdentifierArrow");
+  arrow.className = "player-arrow";
+  arrow.innerText = "Hello";
+  return arrow;
 };

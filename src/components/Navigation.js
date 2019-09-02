@@ -3,10 +3,15 @@ import { Link, NavLink } from "react-router-dom";
 
 const Navigation = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
-          <i className="fab fa-react text-info" />
+          <img
+            src="http://wiping.it/images/NavLogo.png"
+            alt="Home"
+            width="24"
+            height="25"
+          />
         </Link>
         <button
           className="navbar-toggler"

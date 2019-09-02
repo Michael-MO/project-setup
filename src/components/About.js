@@ -3,7 +3,9 @@ import React from "react";
 const About = () => {
   return (
     <React.Fragment>
-      <h3 className="mb-4">About</h3>
+      <div class="page-header">
+        <h2 itemprop="headline">About Us</h2>
+      </div>
       <div className="row">
         <div className="col-md-4">
           <h5>Declarative</h5>

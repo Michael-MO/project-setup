@@ -1,14 +1,31 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { ChangePlayerState, ChangeWholePlayerState } from "./../../utils";
+import {
+  ChangePlayerState,
+  ChangeWholePlayerState,
+  CreateArrow
+} from "./../../utils";
 
 class PlayersList extends Component {
+  ArrowIn(event) {
+    let element = event.currentTarget;
+    element.appendChild(CreateArrow());
+  }
+
+  ArrowOut(event) {
+    let element = event.currentTarget;
+    element.removeChild(document.getElementById("PlayerIdentifierArrow"));
+  }
+
   render() {
     return (
       <React.Fragment>
         {this.props.allPlayers.map(player => {
           return (
-            <tr>
+            <tr
+              onMouseOver={e => this.ArrowIn(e)}
+              onMouseOut={e => this.ArrowOut(e)}
+            >
               <td key={player.Name}>
                 <span
                   className="badge badge-setup"
@@ -23,7 +40,7 @@ class PlayersList extends Component {
                   <td>
                     <span
                       className="badge badge-setup badge-success"
-                      onClick={e => ChangePlayerState(e)}
+                      onDoubleClick={e => ChangePlayerState(e)}
                     ></span>
                   </td>
                 );

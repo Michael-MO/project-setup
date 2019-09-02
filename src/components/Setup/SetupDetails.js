@@ -6,8 +6,8 @@ import { CalColumnWidth } from "./../../utils";
 const SetupDetails = props => {
   return (
     <React.Fragment>
-      <table className="table table-sm">
-        <thead className="thead-light">
+      <table className="table table-sm table-borderless">
+        <thead>
           <tr>
             <th className="col-1">Players</th>
             {props.selectRaid.Bosses.map(boss => {

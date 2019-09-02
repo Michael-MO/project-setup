@@ -13,7 +13,9 @@ class Setup extends Component {
   render() {
     return (
       <React.Fragment>
-        <h3 className="mb-4">Setup</h3>
+        <div class="page-header">
+          <h2 itemprop="headline">Setup</h2>
+        </div>
         <div className="row">
           <div className="col">
             <div className="card">
