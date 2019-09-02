@@ -1,51 +1,63 @@
 const DB_CLASSES = [
   {
     ID: 1,
-    Name: "Death Knight"
+    Name: "Death Knight",
+    HexColor: "#C41F3B"
   },
   {
     ID: 2,
-    Name: "Demon Hunter"
+    Name: "Demon Hunter",
+    HexColor: "#A330C9"
   },
   {
     ID: 3,
-    Name: "Druid"
+    Name: "Druid",
+    HexColor: "#FF7D0A"
   },
   {
     ID: 4,
-    Name: "Hunter"
+    Name: "Hunter",
+    HexColor: "#ABD473"
   },
   {
     ID: 5,
-    Name: "Mage"
+    Name: "Mage",
+    HexColor: "#40C7EB"
   },
   {
     ID: 6,
-    Name: "Monk"
+    Name: "Monk",
+    HexColor: "#00FF96"
   },
   {
     ID: 7,
-    Name: "Paladin"
+    Name: "Paladin",
+    HexColor: "#F58CBA"
   },
   {
     ID: 8,
-    Name: "Priest"
+    Name: "Priest",
+    HexColor: "#FFFFFF"
   },
   {
     ID: 9,
-    Name: "Rogue"
+    Name: "Rogue",
+    HexColor: "#FFF569"
   },
   {
     ID: 10,
-    Name: "Shaman"
+    Name: "Shaman",
+    HexColor: "#0070DE"
   },
   {
     ID: 11,
-    Name: "Warlock"
+    Name: "Warlock",
+    HexColor: "#8787ED"
   },
   {
     ID: 12,
-    Name: "Warrior"
+    Name: "Warrior",
+    HexColor: "#C79C6E"
   }
 ];
 

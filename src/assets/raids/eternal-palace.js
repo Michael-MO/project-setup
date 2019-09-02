@@ -25,7 +25,7 @@ const DB_BossesEternalPalace = [
   },
   {
     ID: 7,
-    Name: "Za'qul, Harbinger of N'alotha"
+    Name: "Za'qul, Harbinger of Ny'alotha"
   },
   {
     ID: 8,

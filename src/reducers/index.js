@@ -1,6 +1,9 @@
 import { combineReducers } from "redux";
+import DB_RAIDS from "../assets/raids";
+import { playersObjectMerged } from "../components/Setup/Logic/playersObjectMerged";
+import { playersBySuperSort } from "../utils";
 
-const selectRaidsReducer = (state = null, action) => {
+const selectRaidsReducer = (state = DB_RAIDS[DB_RAIDS.length - 1], action) => {
   switch (action.type) {
     case "SELECT_RAIDS":
       return action.payload;
@@ -9,33 +12,15 @@ const selectRaidsReducer = (state = null, action) => {
   }
 };
 
-const getCompletePlayersReducer = (state = [], action) => {
-  switch (action.type) {
-    case "GET_COMPLETE_PLAYERS":
-      let newArray = [];
-
-      action.payload.players.forEach(player => {
-        action.payload.classes.forEach(gameClass => {
-          if (player.ClassID === gameClass.ID) {
-            player.Class = gameClass;
-          }
-        });
-        action.payload.roles.forEach(role => {
-          if (player.RoleID === role.ID) {
-            player.Role = role;
-          }
-        });
-
-        newArray.push(player);
-      });
-
-      return newArray;
-    default:
-      return state;
+const getAllPlayersReducer = (state = [], action) => {
+  if (action) {
+    return playersBySuperSort(playersObjectMerged());
+  } else {
+    return [];
   }
 };
 
 export default combineReducers({
   selectRaid: selectRaidsReducer,
-  getCompletePlayers: getCompletePlayersReducer
+  getAllPlayers: getAllPlayersReducer
 });

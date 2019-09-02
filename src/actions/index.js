@@ -5,9 +5,8 @@ export const selectRaidsAction = raid => {
   };
 };
 
-export const getCompletePlayersAction = (players, roles, classes) => {
+export const getAllPlayersAction = () => {
   return {
-    type: "GET_COMPLETE_PLAYERS",
-    payload: { players, roles, classes }
+    type: "GET_ALL_PLAYERS"
   };
 };
