@@ -6,7 +6,6 @@ import { CalColumnWidth } from "./../../utils";
 const SetupDetails = props => {
   return (
     <React.Fragment>
-      {/* <h4 className="card-title">{props.selectRaid.Name}</h4> */}
       <table className="table table-sm">
         <thead className="thead-light">
           <tr>
