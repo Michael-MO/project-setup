@@ -13,7 +13,7 @@ class Setup extends Component {
   render() {
     return (
       <React.Fragment>
-        <div class="page-header">
+        <div className="page-header">
           <h2 itemprop="headline">Setup</h2>
         </div>
         <div className="row">

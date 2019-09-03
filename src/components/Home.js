@@ -1,29 +1,31 @@
-import React from "react";
+import React, { Component } from "react";
+import Firebase from "firebase";
 
-const Home = () => {
-  return (
-    <div className="jumbotron">
-      <h1 className="display-4 font-weight-bold">
-        JSON<span className="d-inline d-sm-none">-</span>Place
-        <span className="d-sm-inline d-md-none">-</span>holder
-      </h1>
-      <p className="lead">
-        This Web App utilizes React, React-Redux, Redux, Redux-thunk & Axios
-      </p>
-      <hr className="my-4" />
-      <p>
-        This mandatory project, uses '
-        <a
-          href="https://jsonplaceholder.typicode.com/"
-          className="text-break"
-          target="blank"
-        >
-          https://jsonplaceholder.typicode.com/
-        </a>
-        's api for fetching Users, Posts and Comments information.
-      </p>
-    </div>
-  );
-};
+class Home extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      raids: []
+    };
+  }
+
+  componentDidMount() {
+    const rootRef = Firebase.database().ref("/");
+    const raidsRef = rootRef.child("raids");
+    raidsRef.on("value", snapshot => {
+      this.setState(snapshot.val());
+    });
+  }
+
+  render() {
+    const { Raids } = this.state.raids;
+    return (
+      <React.Fragment>
+        <p>{Raids}</p>
+      </React.Fragment>
+    );
+  }
+}
 
 export default Home;

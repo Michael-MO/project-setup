@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { GetAttendancePerBoss } from "./../../assets/setups";
 import {
   ChangePlayerState,
   ChangeWholePlayerState,
@@ -7,6 +8,10 @@ import {
 } from "./../../utils";
 
 class PlayersList extends Component {
+  // componentDidMount() {
+  //   GetAttendancePerBoss(this.props.selectRaid.ID);
+  // }
+
   ArrowIn(event) {
     let element = event.currentTarget;
     element.appendChild(CreateArrow());
@@ -23,8 +28,8 @@ class PlayersList extends Component {
         {this.props.allPlayers.map(player => {
           return (
             <tr
-              onMouseOver={e => this.ArrowIn(e)}
-              onMouseOut={e => this.ArrowOut(e)}
+            // onMouseOver={e => this.ArrowIn(e)}
+            // onMouseOut={e => this.ArrowOut(e)}
             >
               <td key={player.Name}>
                 <span
@@ -35,16 +40,21 @@ class PlayersList extends Component {
                   {player.Name}
                 </span>
               </td>
-              {this.props.selectRaid.Bosses.map(status => {
-                return (
-                  <td>
-                    <span
-                      className="badge badge-setup badge-success"
-                      onDoubleClick={e => ChangePlayerState(e)}
-                    ></span>
-                  </td>
-                );
-              })}
+
+              {GetAttendancePerBoss(this.props.selectRaid.ID, player).map(
+                boss => {
+                  return (
+                    <td>
+                      <span
+                        className="badge badge-setup badge-success"
+                        onDoubleClick={e => ChangePlayerState(e, boss, this)}
+                      >
+                        {console.log(boss.AttendingStatus)}
+                      </span>
+                    </td>
+                  );
+                }
+              )}
             </tr>
           );
         })}

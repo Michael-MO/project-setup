@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Navigation from "./Navigation";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Firebase from "firebase";
+import config from "./../config";
 import "./../assets/sass/styles.scss";
 
 // Import Core Components
@@ -9,6 +11,11 @@ import About from "./About";
 import Setup from "./Setup";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    Firebase.initializeApp(config.Firebase);
+  }
+
   render() {
     return (
       <BrowserRouter>
