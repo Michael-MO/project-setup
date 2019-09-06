@@ -1,31 +1,13 @@
-import React, { Component } from "react";
-import Firebase from "firebase";
+import React from "react";
 
-class Home extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      raids: []
-    };
-  }
-
-  componentDidMount() {
-    const rootRef = Firebase.database().ref("/");
-    const raidsRef = rootRef.child("raids");
-    raidsRef.on("value", snapshot => {
-      this.setState(snapshot.val());
-    });
-  }
-
-  render() {
-    const { Raids } = this.state.raids;
-    return (
-      <React.Fragment>
-        <p>{Raids}</p>
-      </React.Fragment>
-    );
-  }
-}
+const Home = () => {
+  return (
+    <React.Fragment>
+      <div className="page-header">
+        <h2 itemProp="headline">Welcome!</h2>
+      </div>
+    </React.Fragment>
+  );
+};
 
 export default Home;

@@ -3,24 +3,42 @@ import { connect } from "react-redux";
 import RaidsList from "./RaidsList";
 import SetupDetails from "./SetupDetails";
 import { Switch, Route } from "react-router-dom";
-import { getAllPlayersAction } from "./../../actions";
+
+import firebase from "../../config";
 
 class Setup extends Component {
+  constructor() {
+    super();
+
+    this.database = firebase
+      .database()
+      .ref()
+      .child("raids");
+
+    this.state = {
+      raids: []
+    };
+  }
+
   componentDidMount() {
-    this.props.getAllPlayersAction();
+    this.database.on("value", snapshot => {
+      this.setState({
+        raids: snapshot.val()
+      });
+    });
   }
 
   render() {
     return (
       <React.Fragment>
         <div className="page-header">
-          <h2 itemprop="headline">Setup</h2>
+          <h2 itemProp="headline">Setup</h2>
         </div>
         <div className="row">
           <div className="col">
             <div className="card">
               <div className="card-header">
-                <RaidsList />
+                <RaidsList raids={this.state.raids} />
               </div>
               <div className="card-body">
                 <Switch>
@@ -37,7 +55,4 @@ class Setup extends Component {
 
 const mapStateToProps = state => ({});
 
-export default connect(
-  mapStateToProps,
-  { getAllPlayersAction }
-)(Setup);
+export default connect(mapStateToProps)(Setup);

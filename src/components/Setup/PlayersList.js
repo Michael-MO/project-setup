@@ -1,62 +1,71 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { GetAttendancePerBoss } from "./../../assets/setups";
-import {
-  ChangePlayerState,
-  ChangeWholePlayerState,
-  CreateArrow
-} from "./../../utils";
+// import {
+//   ChangePlayerState
+//   ChangeWholePlayerState,
+//   CreateArrow
+// } from "./../../utils";
+
+import firebase from "../../config";
+import Player from "./Player";
 
 class PlayersList extends Component {
-  // componentDidMount() {
-  //   GetAttendancePerBoss(this.props.selectRaid.ID);
-  // }
+  constructor(props) {
+    super(props);
 
-  ArrowIn(event) {
-    let element = event.currentTarget;
-    element.appendChild(CreateArrow());
+    this.dbPlayers = firebase
+      .database()
+      .ref()
+      .child("players");
+
+    this.dbClasses = firebase
+      .database()
+      .ref()
+      .child("classes");
+
+    this.dbRoles = firebase
+      .database()
+      .ref()
+      .child("roles");
+
+    this.state = {
+      players: [],
+      classes: [],
+      roles: []
+    };
   }
 
-  ArrowOut(event) {
-    let element = event.currentTarget;
-    element.removeChild(document.getElementById("PlayerIdentifierArrow"));
+  componentDidMount() {
+    this.dbPlayers.on("value", snapPlayers => {
+      this.setState({
+        players: snapPlayers.val()
+      });
+    });
+
+    this.dbClasses.on("value", snapClasses => {
+      this.setState({
+        classes: snapClasses.val()
+      });
+    });
+
+    this.dbRoles.on("value", snapRoles => {
+      this.setState({
+        roles: snapRoles.val()
+      });
+    });
+  }
+
+  componentWillUnmount() {
+    this.dbPlayers.off();
+    this.dbClasses.off();
+    this.dbRoles.off();
   }
 
   render() {
     return (
       <React.Fragment>
-        {this.props.allPlayers.map(player => {
-          return (
-            <tr
-            // onMouseOver={e => this.ArrowIn(e)}
-            // onMouseOut={e => this.ArrowOut(e)}
-            >
-              <td key={player.Name}>
-                <span
-                  className="badge badge-setup"
-                  style={{ backgroundColor: player.Class.HexColor }}
-                  onClick={e => ChangeWholePlayerState(e)}
-                >
-                  {player.Name}
-                </span>
-              </td>
-
-              {GetAttendancePerBoss(this.props.selectRaid.ID, player).map(
-                boss => {
-                  return (
-                    <td>
-                      <span
-                        className="badge badge-setup badge-success"
-                        onDoubleClick={e => ChangePlayerState(e, boss, this)}
-                      >
-                        {console.log(boss.AttendingStatus)}
-                      </span>
-                    </td>
-                  );
-                }
-              )}
-            </tr>
-          );
+        {this.state.players.map(player => {
+          return <Player key={player.ID} item={player} />;
         })}
       </React.Fragment>
     );
@@ -65,7 +74,6 @@ class PlayersList extends Component {
 
 const mapStateToProps = state => {
   return {
-    allPlayers: state.getAllPlayers,
     selectRaid: state.selectRaid
   };
 };

@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { selectRaidsAction } from "../../actions";
-import DB_RAIDS from "../../assets/raids";
 import { convertToURL, raidsByDesc } from "../../utils";
 
 const RaidsList = props => {
@@ -10,7 +9,7 @@ const RaidsList = props => {
     <React.Fragment>
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
         <ul className="navbar-nav mr-auto">
-          {raidsByDesc(DB_RAIDS).map(raid => {
+          {raidsByDesc(props.raids).map(raid => {
             return (
               <li className="nav-item" key={raid.Name}>
                 <NavLink

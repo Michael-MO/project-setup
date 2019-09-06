@@ -1,28 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import PlayersList from "./PlayersList";
-import { CalColumnWidth } from "./../../utils";
+import BossList from "./BossList";
 
 const SetupDetails = props => {
   return (
     <React.Fragment>
       <table className="table table-sm table-borderless">
         <thead>
-          <tr>
-            <th className="col-1">Players</th>
-            {props.selectRaid.Bosses.map(boss => {
-              return (
-                <th
-                  style={{
-                    width: CalColumnWidth(props.selectRaid.Bosses.length)
-                  }}
-                  key={boss.ID}
-                >
-                  {boss.Alias}
-                </th>
-              );
-            })}
-          </tr>
+          <BossList bosses={props.selectRaid.Bosses} />
         </thead>
         <tbody>
           <PlayersList />

@@ -55,7 +55,7 @@ export const CalColumnWidth = columns => {
 };
 
 export const ChangePlayerState = (event, boss, component) => {
-  const state = event.currentTarget.className.split(" ")[2];
+  // const state = event.currentTarget.className.split(" ")[2];
   const element = event.currentTarget;
   let status = boss.AttendingStatus;
 
