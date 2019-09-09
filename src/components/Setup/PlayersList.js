@@ -10,23 +10,13 @@ import firebase from "../../config";
 import Player from "./Player";
 
 class PlayersList extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
-    this.dbPlayers = firebase
-      .database()
-      .ref()
-      .child("players");
-
-    this.dbClasses = firebase
-      .database()
-      .ref()
-      .child("classes");
-
-    this.dbRoles = firebase
-      .database()
-      .ref()
-      .child("roles");
+    this.rootRef = firebase.database().ref();
+    this.dbPlayers = this.rootRef.child("players");
+    this.dbClasses = this.rootRef.child("classes");
+    this.dbRoles = this.rootRef.child("roles");
 
     this.state = {
       players: [],
@@ -35,24 +25,22 @@ class PlayersList extends Component {
     };
   }
 
+  setDbStates(dbRef, stateObj) {
+    dbRef.on("value", snap => {
+      this.setState({
+        stateObj: snap.val()
+      });
+    });
+  }
+
   componentDidMount() {
-    this.dbPlayers.on("value", snapPlayers => {
-      this.setState({
-        players: snapPlayers.val()
-      });
-    });
+    this.setDbStates(this.dbPlayers, "players");
 
-    this.dbClasses.on("value", snapClasses => {
-      this.setState({
-        classes: snapClasses.val()
-      });
-    });
-
-    this.dbRoles.on("value", snapRoles => {
-      this.setState({
-        roles: snapRoles.val()
-      });
-    });
+    // this.dbPlayers.on("value", snapPlayers => {
+    //   this.setState({
+    //     players: snapPlayers.val()
+    //   });
+    // });
   }
 
   componentWillUnmount() {

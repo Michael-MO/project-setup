@@ -15,6 +15,7 @@ const Player = props => {
           {console.log("Player.js: Props-test:")}
           {/* {console.log(props.item)} */}
           {props.item.Name}
+          {props.item2.HexColor}
         </span>
       </td>
 
