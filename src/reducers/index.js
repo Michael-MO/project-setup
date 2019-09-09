@@ -1,26 +1,55 @@
 import { combineReducers } from "redux";
-import DB_RAIDS from "../assets/raids";
-import { playersObjectMerged } from "../components/Setup/Logic/playersObjectMerged";
 import { playersBySuperSort } from "../utils";
 
-const selectRaidsReducer = (state = DB_RAIDS[DB_RAIDS.length - 1], action) => {
+const selectRaidReducer = (state = [], action) => {
   switch (action.type) {
-    case "SELECT_RAIDS":
+    case "SELECT_RAID":
       return action.payload;
     default:
       return state;
   }
 };
 
-const getAllPlayersReducer = (state = [], action) => {
-  if (action) {
-    return playersBySuperSort(playersObjectMerged());
-  } else {
-    return [];
+const getRaidsReducer = (state = [], action) => {
+  switch (action.type) {
+    case "GET_RAIDS":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const getPlayersReducer = (state = [], action) => {
+  switch (action.type) {
+    case "GET_PLAYERS":
+      return playersBySuperSort(action.payload);
+    default:
+      return state;
+  }
+};
+
+const getClassesReducer = (state = [], action) => {
+  switch (action.type) {
+    case "GET_CLASSES":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
+const getRolesReducer = (state = [], action) => {
+  switch (action.type) {
+    case "GET_ROLES":
+      return action.payload;
+    default:
+      return state;
   }
 };
 
 export default combineReducers({
-  selectRaid: selectRaidsReducer,
-  getAllPlayers: getAllPlayersReducer
+  selectRaid: selectRaidReducer,
+  getRaids: getRaidsReducer,
+  getPlayers: getPlayersReducer,
+  getClasses: getClassesReducer,
+  getRoles: getRolesReducer
 });

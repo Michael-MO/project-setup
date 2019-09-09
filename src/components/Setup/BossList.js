@@ -5,7 +5,6 @@ import { CalColumnWidth } from "./../../utils";
 const BossList = props => {
   return (
     <tr>
-      <th className="col-1">Players</th>
       {props.bosses.map(boss => {
         return (
           <th

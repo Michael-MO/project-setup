@@ -4,7 +4,7 @@ const About = () => {
   return (
     <React.Fragment>
       <div class="page-header">
-        <h2 itemprop="headline">About Us</h2>
+        <h2 itemProp="headline">About Us</h2>
       </div>
       <div className="row">
         <div className="col-md-4">

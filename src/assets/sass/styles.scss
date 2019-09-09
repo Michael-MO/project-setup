@@ -85,6 +85,7 @@ span.badge.badge-setup:active {
 
 .table {
   background-color: #1b1b1b;
+  margin-bottom: 0;
 }
 
 .table th {
@@ -93,6 +94,28 @@ span.badge.badge-setup:active {
   padding: 0.75rem;
   background-color: #161616;
   color: #d6d6d6;
+  margin-bottom: 10px;
+}
+
+tbody:before {
+  content: "@";
+  display: block;
+  line-height: 10px;
+  text-indent: -99999px;
+}
+
+.table th:first-child {
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.table th:last-child {
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.table-sm td {
+  padding: 2px;
 }
 
 .navbar.navbar-dark.bg-dark {
@@ -140,6 +163,8 @@ span.badge.badge-setup:active {
 
 .card-header .navbar.navbar-dark.bg-dark {
   min-height: 0;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
 }
 
 .jumbotron {
@@ -164,4 +189,48 @@ span.badge.badge-setup:active {
   left: 0;
   z-index: 9000;
   color: #eee;
+}
+
+.breadcrumb {
+  background: #181818 none repeat scroll 0 0;
+  font-size: $defaultFontSize - 1;
+  padding: 8px 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* Custom CSS */
+
+.simulate-header {
+  text-align: center;
+  padding: 0.75rem;
+  background-color: #161616;
+  color: #d6d6d6;
+  font-weight: bold;
+  display: block;
+  border-radius: 0.25rem;
+  margin-bottom: 10px;
+}
+
+.player-block {
+  display: block;
+  padding: 2px 0;
+  color: #212529;
+}
+
+div.player-list {
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 1s; /* Firefox < 16 */
+  -ms-animation: fadein 1s; /* Internet Explorer */
+  -o-animation: fadein 1s; /* Opera < 12.1 */
+  animation: fadein 1s;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

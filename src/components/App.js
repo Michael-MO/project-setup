@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
+import Navigation from "./Layout/Navigation";
+import Breadcrumbs from "./Layout/Breadcrumbs";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./../assets/sass/styles.scss";
 
@@ -15,6 +16,7 @@ class App extends Component {
         <div className="App">
           <Navigation />
           <div className="container-fluid mt-3">
+            <Breadcrumbs page={"Test"} />
             <Switch>
               <Route exact path="/" component={Home} />
               <Route path="/home" component={Home} />

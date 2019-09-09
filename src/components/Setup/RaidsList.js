@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
-import { selectRaidsAction } from "../../actions";
+import { selectRaidAction } from "../../actions";
 import { convertToURL, raidsByDesc } from "../../utils";
 
 const RaidsList = props => {
@@ -17,7 +17,7 @@ const RaidsList = props => {
                   to={"/setup/" + convertToURL(raid.Name)}
                   role="tab"
                   key={raid.Name}
-                  onClick={() => props.selectRaidsAction(raid)}
+                  onClick={() => props.selectRaidAction(raid)}
                 >
                   {raid.Name}
                 </NavLink>
@@ -34,5 +34,5 @@ const mapStateToProps = state => ({});
 
 export default connect(
   mapStateToProps,
-  { selectRaidsAction }
+  { selectRaidAction }
 )(RaidsList);

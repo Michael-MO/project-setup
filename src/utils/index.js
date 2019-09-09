@@ -1,3 +1,5 @@
+import React from "react";
+
 // "The Ultimate Way to Slugify a URL String in JavaScript".
 // Source & Credit: https://medium.com/@mhagemann/the-ultimate-way-to-slugify-a-url-string-in-javascript-b8e4a0d849e1
 // This function turns a string into a URL-friendly string.
@@ -38,54 +40,46 @@ export const playersByName = players => {
 
 export const playersBySuperSort = players => {
   return players.sort((a, b) => {
-    if (a.Role.ID === b.Role.ID) {
-      if (a.Class.ID === b.Class.ID) {
+    if (a.RoleID === b.RoleID) {
+      if (a.ClassID === b.ClassID) {
         return a.Name < b.Name ? -1 : a.Name > b.Name ? 1 : 0;
       } else {
-        return a.Class.ID < b.Class.ID ? -1 : 1;
+        return a.ClassID < b.ClassID ? -1 : 1;
       }
     } else {
-      return a.Role.ID < b.Role.ID ? -1 : 1;
+      return a.RoleID < b.RoleID ? -1 : 1;
     }
   });
 };
 
 export const CalColumnWidth = columns => {
-  return 90 / columns + "%";
+  return 100 / columns + "%";
 };
 
-export const ChangePlayerState = (event, boss, component) => {
-  // const state = event.currentTarget.className.split(" ")[2];
+export const ChangePlayerState = event => {
+  let state = event.currentTarget.className.split(" ")[2];
   const element = event.currentTarget;
-  let status = boss.AttendingStatus;
 
-  switch (status) {
-    case "3":
+  switch (state) {
+    case "badge-danger":
       element.classList.remove("badge-danger");
       element.classList.add("badge-success");
       element.innerHTML = "";
-      status = 1;
-      component.forceUpdate();
       break;
-    case "2":
+    case "badge-out":
       element.classList.remove("badge-out");
       element.classList.add("badge-danger");
       element.innerHTML = '<i class="fas fa-slash"></i>';
-      status = 3;
-      component.forceUpdate();
       break;
-    case "1":
+    case "badge-success":
       element.classList.remove("badge-success");
       element.classList.add("badge-out");
       element.innerHTML = '<i class="fas fa-slash"></i>';
-      status = 2;
-      component.forceUpdate();
       break;
     default:
       element.classList.remove("badge-success");
       element.classList.add("badge-out");
       element.innerHTML = '<i class="fas fa-slash"></i>';
-      component.forceUpdate();
   }
 };
 
@@ -100,4 +94,16 @@ export const CreateArrow = () => {
   arrow.className = "player-arrow";
   arrow.innerText = "Hello";
   return arrow;
+};
+
+export const Loading = () => {
+  return (
+    <div
+      className="spinner-border"
+      style={{ width: "3rem", height: "3rem", color: "#d82731" }}
+      role="status"
+    >
+      <span className="sr-only">Loading...</span>
+    </div>
+  );
 };

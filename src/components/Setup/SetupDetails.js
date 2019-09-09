@@ -1,26 +1,54 @@
 import React from "react";
 import { connect } from "react-redux";
-import PlayersList from "./PlayersList";
 import BossList from "./BossList";
+import { ChangePlayerState } from "../../utils";
 
 const SetupDetails = props => {
-  return (
-    <React.Fragment>
-      <table className="table table-sm table-borderless">
+  if (props.Raid) {
+    return (
+      <React.Fragment>
         <thead>
-          <BossList bosses={props.selectRaid.Bosses} />
+          <BossList bosses={props.Raid.Bosses} />
         </thead>
         <tbody>
-          <PlayersList />
+          {props.Players.map(player => {
+            return (
+              <tr>
+                {props.Raid.Bosses.map(boss => {
+                  return (
+                    <td>
+                      <span
+                        className="badge badge-setup badge-success"
+                        onDoubleClick={e => ChangePlayerState(e)}
+                      ></span>
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
         </tbody>
-      </table>
-    </React.Fragment>
-  );
+      </React.Fragment>
+    );
+  } else {
+    return (
+      <React.Fragment>
+        <thead>
+          <tr>
+            <th>
+              <h2>Select a raid</h2>
+            </th>
+          </tr>
+        </thead>
+      </React.Fragment>
+    );
+  }
 };
 
 const mapStateToProps = state => {
   return {
-    selectRaid: state.selectRaid
+    Raid: state.selectRaid,
+    Players: state.getPlayers
   };
 };
 
