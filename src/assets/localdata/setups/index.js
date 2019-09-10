@@ -4,7 +4,23 @@ import DB_PLAYERS from "./../raids";
 const DB_SETUPS = [
   {
     ID: 1,
-    RaidID: 1
+    RaidID: 1,
+    Raid: [
+      {
+        ID: 1,
+        Bosses: [
+          {
+            ID: 1,
+            Players: [
+              {
+                ID: 1,
+                Status: "1/2/3"
+              }
+            ]
+          }
+        ]
+      }
+    ]
   },
   {
     ID: 2,

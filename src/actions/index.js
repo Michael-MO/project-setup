@@ -25,6 +25,19 @@ export const getPlayersAction = dbRef => async dispatch => {
   });
 };
 
+export const createPlayerAction = dbRef => async dispatch => {
+  dbRef.push().set({
+    ID: 1,
+    Name: "Unknown Player",
+    ClassID: 6,
+    Spec: "Unreal Spec",
+    RoleID: 1
+  });
+  dispatch({
+    type: "CREATE_PLAYER"
+  });
+};
+
 export const getClassesAction = dbRef => async dispatch => {
   const response = await dbRef.once("value").then(snapshot => {
     return snapshot.val();
