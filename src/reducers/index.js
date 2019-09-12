@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { playersBySuperSort } from "../utils";
 
-const selectRaidReducer = (state = [], action) => {
+const selectRaidReducer = (state = null, action) => {
   switch (action.type) {
     case "SELECT_RAID":
       return action.payload;
