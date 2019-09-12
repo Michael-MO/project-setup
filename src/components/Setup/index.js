@@ -5,23 +5,20 @@ import PlayersList from "./PlayersList";
 import SetupDetails from "./SetupDetails";
 import { Switch, Route } from "react-router-dom";
 
-import firebase from "../../config";
-import { getRaidsAction } from "../../actions";
+import { dbConnection, getRaidsAction } from "../../actions";
 
 class Setup extends Component {
-  constructor() {
-    super();
-
-    this.rootRef = firebase.database();
-    this.dbRaids = this.rootRef.ref("raids");
+  constructor(props) {
+    super(props);
+    this.db = dbConnection();
   }
 
   componentDidMount() {
-    this.props.getRaidsAction(this.dbRaids);
+    this.props.getRaidsAction();
   }
 
   componentWillUnmount() {
-    this.dbRaids.off();
+    this.db.raids().off();
   }
 
   render() {
@@ -38,16 +35,13 @@ class Setup extends Component {
               </div>
               <div className="card-body">
                 <div className="row">
-                  <div className="col-2">
-                    <div className="simulate-header">Players</div>
+                  <div className="col-auto">
                     <PlayersList />
                   </div>
-                  <div className="col-10">
-                    <table className="table table-sm table-borderless">
-                      <Switch>
-                        <Route path="/setup/:string" component={SetupDetails} />
-                      </Switch>
-                    </table>
+                  <div className="col">
+                    <Switch>
+                      <Route path="/setup/:string" component={SetupDetails} />
+                    </Switch>
                   </div>
                 </div>
               </div>
