@@ -66,7 +66,7 @@ a:focus {
 span.badge.badge-setup {
   display: block;
   font-size: $defaultFontSize - 1;
-  padding: 7px 0px;
+  padding: 7px 30px;
   min-height: 29px;
 }
 
@@ -219,11 +219,24 @@ tbody:before {
 }
 
 div.player-list {
-  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein 1s; /* Firefox < 16 */
-  -ms-animation: fadein 1s; /* Internet Explorer */
-  -o-animation: fadein 1s; /* Opera < 12.1 */
+  -webkit-animation: fadein 1s;
+  -moz-animation: fadein 1s;
+  -ms-animation: fadein 1s;
+  -o-animation: fadein 1s;
   animation: fadein 1s;
+}
+
+table.table-setup {
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -o-transition: 1s;
+  transition: 1s;
+  opacity: 0;
+  visibility: hidden;
+}
+table.table-setup.show {
+  opacity: 1;
+  visibility: visible;
 }
 
 @keyframes fadein {
