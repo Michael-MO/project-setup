@@ -107,3 +107,10 @@ export const Loading = () => {
     </div>
   );
 };
+
+export const AnimateOnStateChange = () => {
+  const wrapper = document.getElementById("table-setup");
+  if (wrapper) {
+    wrapper.classList.toggle("show");
+  }
+};
