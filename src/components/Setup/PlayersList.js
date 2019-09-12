@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import firebase from "../../config";
 import { Loading } from "../../utils";
 
 import {
+  dbConnection,
   getPlayersAction,
   getClassesAction,
   getRolesAction
@@ -13,11 +13,7 @@ import Player from "./Player";
 class PlayersList extends Component {
   constructor(props) {
     super(props);
-
-    this.rootRef = firebase.database();
-    this.dbPlayers = this.rootRef.ref("players");
-    this.dbClasses = this.rootRef.ref("classes");
-    this.dbRoles = this.rootRef.ref("roles");
+    this.db = dbConnection();
 
     this.state = {
       playersIsLoaded: false,
@@ -27,21 +23,21 @@ class PlayersList extends Component {
   }
 
   componentDidMount() {
-    this.props.getPlayersAction(this.dbPlayers).then(() => {
+    this.props.getPlayersAction().then(() => {
       this.setState({ playersIsLoaded: true });
     });
-    this.props.getClassesAction(this.dbClasses).then(() => {
+    this.props.getClassesAction().then(() => {
       this.setState({ classesIsLoaded: true });
     });
-    this.props.getRolesAction(this.dbRoles).then(() => {
+    this.props.getRolesAction().then(() => {
       this.setState({ rolesIsLoaded: true });
     });
   }
 
   componentWillUnmount() {
-    this.dbPlayers.off();
-    this.dbClasses.off();
-    this.dbRoles.off();
+    this.db.players().off();
+    this.db.classes().off();
+    this.db.roles().off();
   }
 
   render() {
@@ -52,6 +48,9 @@ class PlayersList extends Component {
     ) {
       return (
         <React.Fragment>
+          <div className="simulate-header">
+            Players ({this.props.Players.length})
+          </div>
           <div className="player-list">
             {this.props.Players.map(player => {
               return (
@@ -67,7 +66,9 @@ class PlayersList extends Component {
         </React.Fragment>
       );
     } else {
-      return <div className="d-flex justify-content-center">{Loading()}</div>;
+      return (
+        <div className="d-flex justify-content-center p-3">{Loading()}</div>
+      );
     }
   }
 }
