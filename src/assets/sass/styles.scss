@@ -70,6 +70,11 @@ span.badge.badge-setup {
   min-height: 29px;
 }
 
+.badge-setup .fas.fa-slash {
+  animation: rotation 0.2s linear;
+  animation-iteration-count: 1;
+}
+
 span.badge.badge-setup:hover {
   cursor: pointer;
 }
@@ -245,5 +250,14 @@ table.table-setup.show {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }

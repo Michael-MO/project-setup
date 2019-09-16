@@ -59,6 +59,7 @@ export const CalColumnWidth = columns => {
 export const ChangePlayerState = event => {
   let state = event.currentTarget.className.split(" ")[2];
   const element = event.currentTarget;
+  // const child = element.children[0];
 
   switch (state) {
     case "badge-danger":
@@ -69,17 +70,17 @@ export const ChangePlayerState = event => {
     case "badge-out":
       element.classList.remove("badge-out");
       element.classList.add("badge-danger");
-      element.innerHTML = '<i class="fas fa-slash"></i>';
+      element.innerHTML = "<i class='fas fa-slash'></i>";
       break;
     case "badge-success":
       element.classList.remove("badge-success");
       element.classList.add("badge-out");
-      element.innerHTML = '<i class="fas fa-slash"></i>';
+      element.innerHTML = "<i class='fas fa-slash'></i>";
       break;
     default:
       element.classList.remove("badge-success");
       element.classList.add("badge-out");
-      element.innerHTML = '<i class="fas fa-slash"></i>';
+      element.innerHTML = "<i class='fas fa-slash'></i>";
   }
 };
 
