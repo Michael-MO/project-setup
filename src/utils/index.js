@@ -59,21 +59,21 @@ export const CalColumnWidth = columns => {
 export const ChangePlayerState = (status, event) => {
   let state = status;
   const element = event.currentTarget;
-
+  console.log("Current:" + state);
   switch (state) {
-    case "0":
+    case 0:
       element.classList.remove("badge-danger");
       element.classList.add("badge-success");
       element.innerHTML = "";
       state = 1;
       break;
-    case "2":
+    case 2:
       element.classList.remove("badge-out");
       element.classList.add("badge-danger");
       element.innerHTML = "<i class='fas fa-slash'></i>";
       state = 0;
       break;
-    case "1":
+    case 1:
       element.classList.remove("badge-success");
       element.classList.add("badge-out");
       element.innerHTML = "<i class='fas fa-slash'></i>";
@@ -84,6 +84,7 @@ export const ChangePlayerState = (status, event) => {
       element.classList.add("badge-out");
       element.innerHTML = "<i class='fas fa-slash'></i>";
   }
+  console.log("Changed to:" + state);
 };
 
 export const SetInitPlayerState = (status, event) => {
