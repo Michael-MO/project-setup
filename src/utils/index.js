@@ -23,11 +23,11 @@ export const convertToURL = string => {
 };
 
 export const raidsByAsc = raids => {
-  return raids.sort((a, b) => a.ID - b.ID);
+  return raids.sort((a, b) => a.Order - b.Order);
 };
 
 export const raidsByDesc = raids => {
-  return raids.sort((a, b) => b.ID - a.ID);
+  return raids.sort((a, b) => b.Order - a.Order);
 };
 
 export const playersByClass = players => {
@@ -56,31 +56,56 @@ export const CalColumnWidth = columns => {
   return 100 / columns + "%";
 };
 
-export const ChangePlayerState = event => {
-  let state = event.currentTarget.className.split(" ")[2];
+export const ChangePlayerState = (status, event) => {
+  let state = status;
   const element = event.currentTarget;
-  // const child = element.children[0];
 
   switch (state) {
-    case "badge-danger":
+    case "0":
       element.classList.remove("badge-danger");
       element.classList.add("badge-success");
       element.innerHTML = "";
+      state = 1;
       break;
-    case "badge-out":
+    case "2":
       element.classList.remove("badge-out");
       element.classList.add("badge-danger");
       element.innerHTML = "<i class='fas fa-slash'></i>";
+      state = 0;
       break;
-    case "badge-success":
+    case "1":
       element.classList.remove("badge-success");
       element.classList.add("badge-out");
       element.innerHTML = "<i class='fas fa-slash'></i>";
+      state = 2;
       break;
     default:
       element.classList.remove("badge-success");
       element.classList.add("badge-out");
       element.innerHTML = "<i class='fas fa-slash'></i>";
+  }
+};
+
+export const SetInitPlayerState = (status, event) => {
+  let state = status;
+  const element = event.currentTarget;
+
+  switch (state) {
+    case 0:
+      element.classList.add("badge-danger");
+      element.innerHTML = "<i class='fas fa-slash'></i>";
+      break;
+    case 2:
+      element.classList.add("badge-out");
+      element.innerHTML = "<i class='fas fa-slash'></i>";
+      break;
+    case 1:
+      element.classList.add("badge-success");
+      element.innerHTML = "";
+      break;
+    default:
+      element.classList.add("badge-success");
+      element.innerHTML = "";
   }
 };
 

@@ -35,7 +35,7 @@ class Setup extends Component {
               </div>
               <div className="card-body">
                 <div className="row">
-                  <div className="col-auto">
+                  <div className="col-auto" style={{ minWidth: "146px" }}>
                     <PlayersList />
                   </div>
                   <div className="col">

@@ -46,10 +46,20 @@ const getRolesReducer = (state = [], action) => {
   }
 };
 
+const getSetupsReducer = (state = [], action) => {
+  switch (action.type) {
+    case "GET_SETUPS":
+      return action.payload;
+    default:
+      return state;
+  }
+};
+
 export default combineReducers({
   selectRaid: selectRaidReducer,
   getRaids: getRaidsReducer,
   getPlayers: getPlayersReducer,
   getClasses: getClassesReducer,
-  getRoles: getRolesReducer
+  getRoles: getRolesReducer,
+  getSetups: getSetupsReducer
 });

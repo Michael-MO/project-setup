@@ -2,6 +2,7 @@
 
 $defaultFontSize: 15px;
 $defaultFont: "Roboto", sans-serif;
+$defaultFontColor: #212529;
 
 * {
   font-family: $defaultFont;
@@ -73,6 +74,7 @@ span.badge.badge-setup {
 .badge-setup .fas.fa-slash {
   animation: rotation 0.2s linear;
   animation-iteration-count: 1;
+  color: $defaultFontColor;
 }
 
 span.badge.badge-setup:hover {
@@ -223,33 +225,41 @@ tbody:before {
   color: #212529;
 }
 
-div.player-list {
-  -webkit-animation: fadein 1s;
-  -moz-animation: fadein 1s;
-  -ms-animation: fadein 1s;
-  -o-animation: fadein 1s;
-  animation: fadein 1s;
+div#player-list {
+  -webkit-animation: fadeInFromLeft 1s;
+  -moz-animation: fadeInFromLeft 1s;
+  -ms-animation: fadeInFromLeft 1s;
+  -o-animation: fadeInFromLeft 1s;
+  animation: fadeInFromLeft 1s;
 }
 
-table.table-setup {
-  -webkit-transition: 1s;
-  -moz-transition: 1s;
-  -o-transition: 1s;
-  transition: 1s;
-  opacity: 0;
-  visibility: hidden;
-}
-table.table-setup.show {
-  opacity: 1;
-  visibility: visible;
+table#table-setup {
+  -webkit-animation: fadeInFromRight 1s;
+  -moz-animation: fadeInFromRight 1s;
+  -ms-animation: fadeInFromRight 1s;
+  -o-animation: fadeInFromRight 1s;
+  animation: fadeInFromRight 1s;
 }
 
-@keyframes fadein {
+@keyframes fadeInFromRight {
   from {
     opacity: 0;
+    transform: translateX(20px);
   }
   to {
     opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 

@@ -20,6 +20,7 @@ class Firebase {
   classes = () => this.db.ref("classes");
   roles = () => this.db.ref("roles");
   raids = () => this.db.ref("raids");
+  setups = () => this.db.ref("setups");
 }
 
 export default Firebase;

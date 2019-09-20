@@ -39,19 +39,6 @@ export const getPlayersAction = () => async dispatch => {
   });
 };
 
-export const createPlayerAction = dbRef => async dispatch => {
-  dbRef.push().set({
-    ID: 1,
-    Name: "Unknown Player",
-    ClassID: 6,
-    Spec: "Unreal Spec",
-    RoleID: 1
-  });
-  dispatch({
-    type: "CREATE_PLAYER"
-  });
-};
-
 export const getClassesAction = () => async dispatch => {
   const response = await db
     .classes()
@@ -78,12 +65,45 @@ export const getRolesAction = () => async dispatch => {
   });
 };
 
-export const getSetups = dbRef => async dispatch => {
-  const response = await dbRef.once("value").then(snapshot => {
-    return snapshot.val();
-  });
+export const getSetupsAction = raid => async dispatch => {
+  var castToArray = [];
+
+  const response = await db
+    .setups()
+    .once("value", snapshot => {
+      snapshot.forEach(childSnapshot => {
+        var childKey = childSnapshot.key;
+        var childData = childSnapshot.val();
+        childData.Key = childKey;
+        castToArray.push(childData);
+      });
+    })
+    .then(snapshot => {
+      return castToArray.filter(x => x.Raid === raid.ID);
+    });
   dispatch({
     type: "GET_SETUPS",
     payload: response
   });
 };
+
+// export const fillSetupsCollection = (players, raids) => async dispatch => {
+//   var obj = {};
+
+//   players.forEach(async player => {
+//     raids.forEach(async raid => {
+//       raid.Bosses.forEach(async boss => {
+//         obj.Player = player.ID;
+//         obj.Raid = raid.ID;
+//         obj.Boss = boss.ID;
+//         obj.Status = 1;
+
+//         await db.setups().push(obj);
+//       });
+//     });
+//   });
+
+//   dispatch({
+//     type: "CREATE_SETUPS"
+//   });
+// };

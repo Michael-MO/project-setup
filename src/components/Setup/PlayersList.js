@@ -51,7 +51,7 @@ class PlayersList extends Component {
           <div className="simulate-header">
             Players ({this.props.Players.length})
           </div>
-          <div className="player-list">
+          <div id="player-list">
             {this.props.Players.map(player => {
               return (
                 <Player

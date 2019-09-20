@@ -1,6 +1,6 @@
 import React from "react";
 
-const About = () => {
+const About = props => {
   return (
     <React.Fragment>
       <div class="page-header">
