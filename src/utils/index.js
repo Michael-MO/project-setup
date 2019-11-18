@@ -59,7 +59,7 @@ export const CalColumnWidth = columns => {
 export const ChangePlayerState = (obj, event) => {
   var state = obj.Status;
   const element = event.currentTarget;
-
+  console.log("Current:" + state);
   switch (state) {
     case 0:
       element.classList.remove("badge-danger");
@@ -84,6 +84,7 @@ export const ChangePlayerState = (obj, event) => {
       element.classList.add("badge-out");
       element.innerHTML = "<i class='fas fa-slash'></i>";
   }
+  console.log("Changed to:" + state);
 };
 
 export const SetInitPlayerState = (obj, event) => {
