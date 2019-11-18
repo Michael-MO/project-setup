@@ -58,13 +58,9 @@ class SetupDetails extends Component {
                             <td>
                               <span
                                 key={setup.Key}
-                                className="badge badge-setup"
-                                onLoad={e =>
-                                  SetInitPlayerState(setup.Status, e)
-                                }
-                                onDoubleClick={e =>
-                                  ChangePlayerState(setup.Status, e)
-                                }
+                                className="badge badge-setup {initState}"
+                                onLoad={e => SetInitPlayerState(setup, e)}
+                                onDoubleClick={e => ChangePlayerState(setup, e)}
                               ></span>
                             </td>
                           );

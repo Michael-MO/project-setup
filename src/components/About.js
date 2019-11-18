@@ -3,7 +3,7 @@ import React from "react";
 const About = props => {
   return (
     <React.Fragment>
-      <div class="page-header">
+      <div className="page-header">
         <h2 itemProp="headline">About Us</h2>
       </div>
       <div className="row">
